@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.2
+    hooks:
+      - id: uv-lock
+
+  - repo: local
+    hooks:
+      # Run the linter and fix
+      - id: uv-ruff-check
+        name: ruff-check
+        entry: uv run --frozen ruff check --fix
+        language: system
+        types_or: [python, pyi, jupyter]
+        exclude: ^agentinsight/api/
+
+      # Run the formatter.
+      - id: uv-ruff-format
+        name: ruff-format
+        entry: uv run --frozen ruff format
+        language: system
+        types_or: [python, pyi, jupyter]
+        exclude: ^agentinsight/api/
+
+      - id: uv-mypy
+        name: mypy
+        entry: uv run --frozen mypy agentinsight --no-error-summary
+        language: system
+        files: ^agentinsight/
+        pass_filenames: false

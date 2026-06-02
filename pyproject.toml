@@ -1,0 +1,132 @@
+[project]
+name = "agentinsight-sdk"
+version = "0.1.0"
+description = "Python SDK for AgentInsight — LLM observability, tracing, evaluation, and prompt management"
+readme = "README.md"
+authors = [{ name = "agentinsight", email = "developers@agent.goldebridge.com" }]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "httpx>=0.15.4,<1.0",
+    "pydantic>=2,<3",
+    "backoff>=1.10.0",
+    "wrapt>=1.14,<2",
+    "packaging>=23.2,<27.0",
+    "opentelemetry-api>=1.33.1,<2",
+    "opentelemetry-sdk>=1.33.1,<2",
+    "opentelemetry-exporter-otlp-proto-http>=1.33.1,<2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.4,<9.0",
+    "pytest-timeout>=2.1.0,<3",
+    "pytest-xdist>=3.3.1,<4",
+    "pre-commit>=3.2.2,<4",
+    "pytest-asyncio>=0.21.1,<1.2.0",
+    "pytest-httpserver>=1.0.8,<2",
+    "ruff>=0.15.2,<0.16",
+    "mypy>=1.0.0,<2",
+    "openai>=0.27.8",
+    "langchain-openai>=0.0.5,<0.4",
+    "langchain>=1,<2",
+    "langgraph>=1,<2",
+    "autoevals>=0.0.130,<0.1",
+    "opentelemetry-instrumentation-threading>=0.59b0,<1",
+    "tenacity>=9.1.4",
+]
+docs = [
+    "pdoc>=15.0.4,<16",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.2,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+# Basic protection against supply chain attacks
+exclude-newer = "7 days"
+
+[tool.uv.build-backend]
+module-root = ""
+module-name = "agentinsight"
+
+[tool.pytest.ini_options]
+log_cli = true
+markers = [
+    "unit: deterministic tests that run without an AgentInsight server",
+    "e2e: tests that require a real AgentInsight server or persisted backend behaviour",
+    "serial_e2e: e2e tests that must not share server concurrency with the rest of the suite",
+    "live_provider: tests that call live model providers and run as a dedicated CI suite",
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = false
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+# Performance optimizations for CI
+cache_dir = ".mypy_cache"
+sqlite_cache = true
+incremental = true
+show_column_numbers = true
+
+[[tool.mypy.overrides]]
+module = [
+    "langchain.*",
+    "openai.*",
+    "chromadb.*",
+    "tiktoken.*",
+    "google.*",
+    "anthropic.*",
+    "cohere.*",
+    "dashscope.*",
+    "pymongo.*",
+    "bson.*",
+    "boto3.*",
+    "llama_index.*",
+    "respx.*",
+    "bs4.*",
+    "lark.*",
+    "huggingface_hub.*",
+    "backoff.*",
+    "wrapt.*",
+    "packaging.*",
+    "requests.*",
+    "opentelemetry.*"
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "agentinsight.api.*"
+disable_error_code = ["redundant-cast", "no-untyped-def"]
+
+[tool.ruff]
+target-version = "py310"
+
+[tool.ruff.lint]
+extend-select = [
+    "I", # Import formatting
+    # These used to be enabled in the "local ruff.toml",
+    # which was never enforced; hence, enabling these will
+    # cause a large number of linting errors.
+
+    # "D", # Docstring lints
+    # "D401", # Enforce imperative mood in docstrings
+]
+exclude = ["agentinsight/api/**/*.py"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

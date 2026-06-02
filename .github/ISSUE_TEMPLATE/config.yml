@@ -1,0 +1,10 @@
+contact_links:
+  - name: 🐞 Bug Report
+    url: https://github.com/agentinsight/agentinsight-python/issues/new?template=bug_report.md&labels=bug
+    about: Create a bug report to help us improve the Python SDK and integrations.
+  - name: 💡 Feature Request
+    url: https://github.com/agentinsight/agentinsight-python/discussions
+    about: Suggest any ideas you have using our discussion forums.
+  - name: 🤗 Get Help
+    url: https://github.com/agentinsight/agentinsight-python/discussions
+    about: If you can't get something to work the way you expect, open a question in our discussion forums.
