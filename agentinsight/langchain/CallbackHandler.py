@@ -1316,7 +1316,7 @@ class LangchainCallbackHandler(LangchainBaseCallbackHandler):
     def _log_model_parse_warning(self) -> None:
         if not hasattr(self, "_model_parse_warning_logged"):
             agentinsight_logger.warning(
-                "AgentInsight was not able to parse the LLM model. The LLM call will be recorded without model name. Please create an issue: https://github.com/agentinsight"
+                "AgentInsight was not able to parse the LLM model. The LLM call will be recorded without model name. Please create an issue: https://github.com/AgentInsight/agentinsight-sdk-python"
             )
 
             self._model_parse_warning_logged = True

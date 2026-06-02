@@ -1061,8 +1061,8 @@ def create_evaluator_from_autoevals(
 class RunnerContext:
     """Wraps :meth:`AgentInsight.run_experiment` with CI-injected defaults.
 
-    Intended for use with the ``agentinsight/experiment-action`` GitHub Action
-    (https://github.com/agentinsight/experiment-action). The action builds a
+    Intended for use with the ``AgentInsight/experiment-action`` GitHub Action
+    (https://github.com/AgentInsight/experiment-action). The action builds a
     ``RunnerContext`` before invoking the user's ``experiment(context)``
     function. Defaults set here (dataset, metadata tags) are applied when
     the user omits them on the :meth:`run_experiment` call; users can
@@ -1156,8 +1156,8 @@ class RunnerContext:
 class RegressionError(Exception):
     """Raised by a user's ``experiment`` function to signal a CI gate failure.
 
-    Intended for use with the ``agentinsight/experiment-action`` GitHub Action
-    (https://github.com/agentinsight/experiment-action). The action catches this
+    Intended for use with the ``AgentInsight/experiment-action`` GitHub Action
+    (https://github.com/AgentInsight/experiment-action). The action catches this
     exception and, when ``should_fail_on_error`` is enabled, fails the
     workflow run and renders a callout in the PR comment using
     ``metric``/``value``/``threshold`` if supplied, otherwise ``str(exc)``.

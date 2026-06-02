@@ -9,10 +9,10 @@
 # AgentInsight Python SDK
 
 [![MIT License](https://img.shields.io/badge/License-MIT-red.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![CI test status](https://img.shields.io/github/actions/workflow/status/AgentInsight/agentinsight-python/ci.yml?style=flat-square&label=All%20tests)](https://github.com/AgentInsight/agentinsight-python/actions/workflows/ci.yml?query=branch%3Amain)
+[![CI test status](https://img.shields.io/github/actions/workflow/status/AgentInsight/agentinsight-sdk-python/ci.yml?style=flat-square&label=All%20tests)](https://github.com/AgentInsight/agentinsight-sdk-python/actions/workflows/ci.yml?query=branch%3Amain)
 [![PyPI Version](https://img.shields.io/pypi/v/agentinsight-sdk.svg?style=flat-square&label=pypi+agentinsight-sdk)](https://pypi.python.org/pypi/agentinsight-sdk)
 [![Python Version](https://img.shields.io/pypi/pyversions/agentinsight-sdk.svg?style=flat-square&label=python)](https://pypi.python.org/pypi/agentinsight-sdk)
-[![GitHub Repo stars](https://img.shields.io/github/stars/AgentInsight/agentinsight?style=flat-square&logo=GitHub&label=AgentInsight%2Fagentinsight)](https://github.com/AgentInsight/agentinsight)
+[![GitHub Repo stars](https://img.shields.io/github/stars/AgentInsight/agentinsight-sdk-python?style=flat-square&logo=GitHub&label=AgentInsight%2Fagentinsight-sdk-python)](https://github.com/AgentInsight/agentinsight-sdk-python)
 
 ## Overview
 
@@ -386,11 +386,11 @@ For full documentation, please refer to the [AgentInsight Official Documentation
 
 ## Contributing
 
-Please refer to [CONTRIBUTING.md](https://github.com/AgentInsight/agentinsight-python/blob/main/CONTRIBUTING.md) for contribution guidelines.
+Please refer to [CONTRIBUTING.md](https://github.com/AgentInsight/agentinsight-sdk-python/blob/main/CONTRIBUTING.md) for contribution guidelines.
 
 ## Security
 
-Please refer to [SECURITY.md](https://github.com/AgentInsight/agentinsight-python/blob/main/SECURITY.md) for security policy and vulnerability reporting.
+Please refer to [SECURITY.md](https://github.com/AgentInsight/agentinsight-sdk-python/blob/main/SECURITY.md) for security policy and vulnerability reporting.
 
 ## License
 
@@ -409,10 +409,10 @@ This project is built upon and evolved from the [Langfuse Python SDK](https://gi
 # AgentInsight Python SDK
 
 [![MIT License](https://img.shields.io/badge/License-MIT-red.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![CI test status](https://img.shields.io/github/actions/workflow/status/AgentInsight/agentinsight-python/ci.yml?style=flat-square&label=All%20tests)](https://github.com/AgentInsight/agentinsight-python/actions/workflows/ci.yml?query=branch%3Amain)
+[![CI test status](https://img.shields.io/github/actions/workflow/status/AgentInsight/agentinsight-sdk-python/ci.yml?style=flat-square&label=All%20tests)](https://github.com/AgentInsight/agentinsight-sdk-python/actions/workflows/ci.yml?query=branch%3Amain)
 [![PyPI Version](https://img.shields.io/pypi/v/agentinsight-sdk.svg?style=flat-square&label=pypi+agentinsight-sdk)](https://pypi.python.org/pypi/agentinsight-sdk)
 [![Python Version](https://img.shields.io/pypi/pyversions/agentinsight-sdk.svg?style=flat-square&label=python)](https://pypi.python.org/pypi/agentinsight-sdk)
-[![GitHub Repo stars](https://img.shields.io/github/stars/AgentInsight/agentinsight?style=flat-square&logo=GitHub&label=AgentInsight%2Fagentinsight)](https://github.com/AgentInsight/agentinsight)
+[![GitHub Repo stars](https://img.shields.io/github/stars/AgentInsight/agentinsight-sdk-python?style=flat-square&logo=GitHub&label=AgentInsight%2Fagentinsight-sdk-python)](https://github.com/AgentInsight/agentinsight-sdk-python)
 
 ## 概述
 
@@ -786,11 +786,11 @@ client = AgentInsight(
 
 ## 贡献
 
-请参阅 [CONTRIBUTING.md](https://github.com/AgentInsight/agentinsight-python/blob/main/CONTRIBUTING.md) 了解贡献指南。
+请参阅 [CONTRIBUTING.md](https://github.com/AgentInsight/agentinsight-sdk-python/blob/main/CONTRIBUTING.md) 了解贡献指南。
 
 ## 安全
 
-请参阅 [SECURITY.md](https://github.com/AgentInsight/agentinsight-python/blob/main/SECURITY.md) 了解安全策略和漏洞报告方式。
+请参阅 [SECURITY.md](https://github.com/AgentInsight/agentinsight-sdk-python/blob/main/SECURITY.md) 了解安全策略和漏洞报告方式。
 
 ## 许可证
 

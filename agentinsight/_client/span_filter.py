@@ -28,7 +28,7 @@ Prefix matching is boundary-aware:
 - exact match (``scope == prefix``)
 - direct descendant scopes (``scope.startswith(prefix + ".")``)
 
-Please create a Github issue in https://github.com/agentinsight if you'd like to expand this default allow list.
+Please create a Github issue in https://github.com/AgentInsight/agentinsight-sdk-python if you'd like to expand this default allow list.
 """
 
 

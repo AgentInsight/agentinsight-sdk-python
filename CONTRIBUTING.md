@@ -83,7 +83,7 @@ Version releases are automated through GitHub Actions using PyPI Trusted Publish
 
 To create a release:
 
-1. Go to [Actions > Release Python SDK](https://github.com/AgentInsight/agentinsight-python/actions/workflows/release.yml)
+1. Go to [Actions > Release Python SDK](https://github.com/AgentInsight/agentinsight-sdk-python/actions/workflows/release.yml)
 2. Click "Run workflow"
 3. Select the version increment type:
    - `patch` - Bug fixes (1.0.0 → 1.0.1)
@@ -206,7 +206,7 @@ type: description
 
 创建发布：
 
-1. 前往 [Actions > Release Python SDK](https://github.com/AgentInsight/agentinsight-python/actions/workflows/release.yml)
+1. 前往 [Actions > Release Python SDK](https://github.com/AgentInsight/agentinsight-sdk-python/actions/workflows/release.yml)
 2. 点击 "Run workflow"
 3. 选择版本号递增类型：
    - `patch` - 缺陷修复 (1.0.0 → 1.0.1)
