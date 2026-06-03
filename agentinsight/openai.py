@@ -14,7 +14,7 @@ AgentInsight automatically tracks:
 
 The integration is fully interoperable with the `observe()` decorator and the low-level tracing SDK.
 
-See docs for more details: https://agent.goldebridge.com/docs/integrations/openai
+See docs for more details: https://agentinsight.goldebridge.com/platform/docs/integrations/openai
 """
 
 import types

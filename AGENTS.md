@@ -380,7 +380,7 @@ bash scripts/codex/quick-check.sh
 
 ```bash
 uv build --no-sources
-uv run --group docs pdoc -o docs/ --docformat google --logo "https://agent.goldebridge.com/agentinsight_logo.svg" agentinsight
+uv run --group docs pdoc -o docs/ --docformat google --logo "https://agentinsight.goldebridge.com/platform/agentinsight_logo.svg" agentinsight
 ```
 
 发布由 GitHub Actions 处理。不要在仓库说明中构建自定义本地发布流程。
