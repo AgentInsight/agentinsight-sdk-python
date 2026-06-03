@@ -18,7 +18,7 @@ import atexit
 import os
 import threading
 from queue import Full, Queue
-from typing import Any, Callable, Dict, List, Optional, cast
+from typing import Any, Callable, Dict, List, Optional, Tuple, cast
 
 import httpx
 from opentelemetry import trace as otel_trace_api
@@ -309,6 +309,16 @@ class AgentInsightResourceManager:
             f"sample_rate={sample_rate if sample_rate is not None else 1.0} | "
             f"media_threads={media_upload_thread_count or 1}"
         )
+
+    @classmethod
+    def _get_single_instance(
+        cls,
+    ) -> Tuple[Optional[str], Optional["AgentInsightResourceManager"]]:
+        with cls._lock:
+            if len(cls._instances) == 1:
+                public_key = next(iter(cls._instances))
+                return public_key, cls._instances[public_key]
+        return None, None
 
     @classmethod
     def reset(cls) -> None:

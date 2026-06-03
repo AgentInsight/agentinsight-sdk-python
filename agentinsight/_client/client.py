@@ -325,6 +325,18 @@ class AgentInsight:
                 agentinsight_logger.addHandler(handler)
 
         public_key = public_key or os.environ.get(AGENTINSIGHT_PUBLIC_KEY)
+        secret_key = secret_key or os.environ.get(AGENTINSIGHT_SECRET_KEY)
+
+        if public_key is None or secret_key is None:
+            existing_public_key, existing_rm = (
+                AgentInsightResourceManager._get_single_instance()
+            )
+            if existing_public_key is not None and existing_rm is not None:
+                if public_key is None:
+                    public_key = existing_public_key
+                if secret_key is None:
+                    secret_key = existing_rm.secret_key
+
         if public_key is None:
             if strict_mode:
                 msg = (
@@ -340,7 +352,6 @@ class AgentInsight:
             self._otel_tracer = otel_trace_api.NoOpTracer()
             return
 
-        secret_key = secret_key or os.environ.get(AGENTINSIGHT_SECRET_KEY)
         if secret_key is None:
             if strict_mode:
                 msg = (
