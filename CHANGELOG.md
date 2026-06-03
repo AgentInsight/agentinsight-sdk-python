@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - AgentInsight 可观测性平台的 Python 客户端 / Python client for the AgentInsight observability platform
 - `@observe` 装饰器，自动追踪函数调用 / `@observe` decorator for automatic function tracing
 - 通过 `agentinsight.openai` 的 OpenAI 集成（猴子补丁方式）/ OpenAI integration via `agentinsight.openai` (monkey-patching)
-- 通过 `AgentInsightCallbackHandler` 的 LangChain 集成 / LangChain integration via `AgentInsightCallbackHandler`
+- 通过 `CallbackHandler` 的 LangChain 集成 / LangChain integration via `CallbackHandler`
 - 9 种观察类型：span、generation、agent、tool、chain、embedding、evaluator、retriever、guardrail / 9 observation types: span, generation, agent, tool, chain, embedding, evaluator, retriever, guardrail
 - 评分系统，支持 NUMERIC、BOOLEAN 和 CATEGORICAL 类型 / Scoring system supporting NUMERIC, BOOLEAN, and CATEGORICAL types
 - 通过 `propagate_attributes` 和 OpenTelemetry Baggage 的上下文传播 / Context propagation via `propagate_attributes` and OpenTelemetry Baggage

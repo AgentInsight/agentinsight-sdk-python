@@ -133,8 +133,9 @@ with client.start_as_current_observation(
     name="process-query",
     as_type="span",
 ) as span:
-    with span.start_as_current_generation(
+    with span.start_as_current_observation(
         name="generate-response",
+        as_type="generation",
         model="gpt-4",
         input={"query": "Tell me about AI"},
         model_parameters={"temperature": 0.7, "max_tokens": 500},
@@ -154,7 +155,8 @@ client.flush()
 为任何 span 添加评分，支持 NUMERIC、BOOLEAN 和 CATEGORICAL 类型 / Add scores to any span, supporting NUMERIC, BOOLEAN, and CATEGORICAL types:
 
 ```python
-from agentinsight import observe
+from agentinsight import observe, get_client
+from agentinsight.api.commons.types.score_data_type import ScoreDataType
 
 @observe()
 def my_function(query: str) -> str:
@@ -162,13 +164,12 @@ def my_function(query: str) -> str:
 
 result = my_function("Hello")
 
-from agentinsight import get_client
 client = get_client()
 
 with client.start_as_current_observation(name="scored-task", as_type="span") as span:
-    span.score(name="relevance", value=0.95, data_type="NUMERIC")
-    span.score(name="is_valid", value=True, data_type="BOOLEAN")
-    span.score(name="sentiment", value="positive", data_type="CATEGORICAL")
+    span.score(name="relevance", value=0.95, data_type=ScoreDataType.NUMERIC)
+    span.score(name="is_valid", value=1.0, data_type=ScoreDataType.BOOLEAN)
+    span.score(name="sentiment", value="positive", data_type=ScoreDataType.CATEGORICAL)
 
 client.flush()
 ```
@@ -208,15 +209,15 @@ AgentInsight 自动追踪 / AgentInsight automatically traces:
 
 ## LangChain 集成 / LangChain Integration
 
-使用 `AgentInsightCallbackHandler` 追踪 LangChain 链的执行 / Use `AgentInsightCallbackHandler` to trace LangChain chain execution:
+使用 `CallbackHandler` 追踪 LangChain 链的执行 / Use `CallbackHandler` to trace LangChain chain execution:
 
 ```python
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
-from agentinsight.langchain import AgentInsightCallbackHandler
+from agentinsight.langchain import CallbackHandler
 
-handler = AgentInsightCallbackHandler()
+handler = CallbackHandler()
 
 llm = ChatOpenAI(model="gpt-4")
 prompt = ChatPromptTemplate.from_messages([
@@ -277,8 +278,9 @@ from agentinsight import AgentInsight, Evaluation
 
 client = AgentInsight()
 
-def my_task(*, input, **kwargs):
-    return f"Processed: {input}"
+def my_task(*, item, **kwargs):
+    input_data = item["input"] if isinstance(item, dict) else item.input
+    return f"Processed: {input_data}"
 
 def accuracy_evaluator(*, input, output, expected_output=None, **kwargs):
     if not expected_output:
