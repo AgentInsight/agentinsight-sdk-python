@@ -18,7 +18,9 @@ from agentinsight.logger import agentinsight_logger as logger
 SUPPORT_URL = "https://agentinsight.goldebridge.com/platform/support"
 API_DOCS_URL = "https://agentinsight.goldebridge.com/docs?lang=py"
 RBAC_DOCS_URL = "https://agentinsight.goldebridge.com/platform/docs/rbac"
-INSTALLATION_DOCS_URL = "https://agentinsight.goldebridge.com/platform/docs/sdk/typescript/guide"
+INSTALLATION_DOCS_URL = (
+    "https://agentinsight.goldebridge.com/platform/docs/sdk/typescript/guide"
+)
 RATE_LIMITS_URL = "https://agentinsight.goldebridge.com/platform/faq/all/api-limits"
 PYPI_PACKAGE_URL = "https://pypi.org/project/agentinsight/"
 

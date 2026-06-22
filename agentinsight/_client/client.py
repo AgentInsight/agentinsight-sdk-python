@@ -223,7 +223,7 @@ class AgentInsight:
                 generation.update(
                     output=response,
                     usage_details={"prompt_tokens": 10, "completion_tokens": 50},
-                    cost_details={"total_cost": 0.0023}
+                    cost_details={"input": 0.001, "output": 0.0023}
                 )
 
                 # Score the generation (supports NUMERIC, BOOLEAN, CATEGORICAL)

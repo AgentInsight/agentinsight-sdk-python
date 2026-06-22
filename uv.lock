@@ -3,12 +3,12 @@ revision = 3
 requires-python = ">=3.10, <4.0"
 
 [options]
-exclude-newer = "2026-05-27T06:19:41.193611Z"
+exclude-newer = "2026-06-15T03:43:20.2181839Z"
 exclude-newer-span = "P7D"
 
 [[package]]
 name = "agentinsight-sdk"
-version = "0.1.4"
+version = "0.1.5"
 source = { editable = "." }
 dependencies = [
     { name = "backoff" },
