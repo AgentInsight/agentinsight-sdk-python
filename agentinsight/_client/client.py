@@ -222,7 +222,7 @@ class AgentInsight:
 
                 generation.update(
                     output=response,
-                    usage_details={"prompt_tokens": 10, "completion_tokens": 50},
+                    usage_details={"input": 10, "output": 50},
                     cost_details={"input": 0.001, "output": 0.0023}
                 )
 
@@ -975,7 +975,7 @@ class AgentInsight:
             completion_start_time: When the model started generating the response
             model: Name/identifier of the AI model used (e.g., "gpt-4")
             model_parameters: Parameters used for the model (e.g., temperature, max_tokens)
-            usage_details: Token usage information (e.g., prompt_tokens, completion_tokens)
+            usage_details: Token usage information, recommended keys: "input"/"output"/"total" (for generation types)
             cost_details: Cost information for the model call
             prompt: Associated prompt template from AgentInsight prompt management
 
@@ -1353,7 +1353,7 @@ class AgentInsight:
             completion_start_time: When the model started generating the response
             model: Name/identifier of the AI model used (e.g., "gpt-4")
             model_parameters: Parameters used for the model (e.g., temperature, max_tokens)
-            usage_details: Token usage information (e.g., prompt_tokens, completion_tokens)
+            usage_details: Token usage information, recommended keys: "input"/"output"/"total" (for generation types)
             cost_details: Cost information for the model call
             prompt: Associated prompt template from AgentInsight prompt management
 
@@ -1367,8 +1367,8 @@ class AgentInsight:
                 client.update_current_generation(
                     output=response.text,
                     usage_details={
-                        "prompt_tokens": response.usage.prompt_tokens,
-                        "completion_tokens": response.usage.completion_tokens
+                        "input": response.usage.prompt_tokens,
+                        "output": response.usage.completion_tokens
                     }
                 )
             ```

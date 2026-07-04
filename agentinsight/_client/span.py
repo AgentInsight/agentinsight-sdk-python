@@ -114,7 +114,7 @@ class AgentInsightObservationWrapper:
             completion_start_time: When the model started generating the response
             model: Name/identifier of the AI model used (e.g., "gpt-4")
             model_parameters: Parameters used for the model (e.g., temperature, max_tokens)
-            usage_details: Token usage information (e.g., prompt_tokens, completion_tokens)
+            usage_details: Token usage information, recommended keys: "input"/"output"/"total"
             cost_details: Cost information for the model call
             prompt: Associated prompt template from AgentInsight prompt management
         """
@@ -1345,7 +1345,7 @@ class AgentInsightGeneration(AgentInsightObservationWrapper):
             completion_start_time: When the model started generating the response
             model: Name/identifier of the AI model used (e.g., "gpt-4")
             model_parameters: Parameters used for the model (e.g., temperature, max_tokens)
-            usage_details: Token usage information (e.g., prompt_tokens, completion_tokens)
+            usage_details: Token usage information, recommended keys: "input"/"output"/"total"
             cost_details: Cost information for the model call
             prompt: Associated prompt template from AgentInsight prompt management
         """
@@ -1376,11 +1376,11 @@ class AgentInsightGeneration(AgentInsightObservationWrapper):
         total_tokens: Optional[int] = None,
     ) -> None:
         usage: Dict[str, int] = {
-            "prompt_tokens": prompt_tokens,
-            "completion_tokens": completion_tokens,
+            "input": prompt_tokens,
+            "output": completion_tokens,
         }
         if total_tokens is not None:
-            usage["total_tokens"] = total_tokens
+            usage["total"] = total_tokens
         self.update(usage_details=usage)
 
 

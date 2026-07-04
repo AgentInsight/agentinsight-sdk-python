@@ -200,12 +200,21 @@ with client.start_as_current_observation(
         response = "AI is a field of computer science..."
         generation.update(
             output=response,
-            usage_details={"prompt_tokens": 10, "completion_tokens": 50},
-            cost_details={"total_cost": 0.0023},
+            usage_details={"input": 10, "output": 50},
+            cost_details={"input": 0.001, "output": 0.0023},
         )
 
 client.flush()
 ```
+
+> **⚠️ Important: `usage_details` and `cost_details` Key Naming**
+>
+> AgentInsight server follows OpenTelemetry GenAI semantic conventions. **Always use `"input"` / `"output"` / `"total"` as the dictionary keys** for both `usage_details` and `cost_details`. Other key names (such as `prompt_tokens`, `completion_tokens`, `total_cost`, `input_cost`, `output_cost`) will be stored but **will NOT be recognized** by the server's cost calculation and analytics features.
+>
+> - `usage_details`: `{"input": <int>, "output": <int>, "total": <int>}` (token counts)
+> - `cost_details`: `{"input": <float>, "output": <float>, "total": <float>}` (monetary cost)
+> - The server automatically computes `total = input + output` when `total` is omitted.
+> - The SDK's OpenAI/LangChain auto-instrumentation already follows this convention; manual `update()` calls must follow it too.
 
 ### 5. Add Scores
 
@@ -654,12 +663,21 @@ with client.start_as_current_observation(
         response = "AI is a field of computer science..."
         generation.update(
             output=response,
-            usage_details={"prompt_tokens": 10, "completion_tokens": 50},
-            cost_details={"total_cost": 0.0023},
+            usage_details={"input": 10, "output": 50},
+            cost_details={"input": 0.001, "output": 0.0023},
         )
 
 client.flush()
 ```
+
+> **⚠️ 重要提示：`usage_details` 和 `cost_details` 键名约定**
+>
+> AgentInsight 服务端遵循 OpenTelemetry GenAI 语义约定。**务必使用 `"input"` / `"output"` / `"total"` 作为字典键名**，同时适用于 `usage_details` 和 `cost_details`。其他键名（如 `prompt_tokens`、`completion_tokens`、`total_cost`、`input_cost`、`output_cost`）虽会被存储，但**不会被**服务端的成本计算和分析功能识别。
+>
+> - `usage_details`：`{"input": <int>, "output": <int>, "total": <int>}`（token 数量）
+> - `cost_details`：`{"input": <float>, "output": <float>, "total": <float>}`（货币成本）
+> - 当省略 `total` 时，服务端会自动计算 `total = input + output`。
+> - SDK 的 OpenAI/LangChain 自动埋点已遵循此约定；手动 `update()` 调用也必须遵循。
 
 ### 5. 添加评分
 
